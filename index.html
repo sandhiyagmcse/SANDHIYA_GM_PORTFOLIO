@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Sandhiya G M — Entry-Level Data Analyst portfolio featuring SQL, Advanced Excel, Python, Power BI, data analytics and machine learning projects." />
+  <meta name="theme-color" content="#101827" />
+  <title>Sandhiya G M | Data Analyst Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0b1220; --panel: #111c2e; --panel2: #152238; --text: #edf3fb;
+      --muted: #a6b4c8; --line: rgba(180,200,225,.15); --teal: #43d9c1;
+      --blue: #73a9ff; --yellow: #f5c96a; --radius: 20px; --max: 1120px;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { margin: 0; background: var(--bg); color: var(--text); font-family: "DM Sans", sans-serif; line-height: 1.65; }
+    a { color: inherit; text-decoration: none; }
+    .wrap { width: min(var(--max), calc(100% - 40px)); margin: auto; }
+    .mono { font-family: "DM Mono", monospace; }
+    .eyebrow { color: var(--teal); font: 500 12px "DM Mono", monospace; letter-spacing: .13em; text-transform: uppercase; }
+    h1,h2,h3 { font-family: Manrope, sans-serif; line-height: 1.15; margin: 0; letter-spacing: -.035em; }
+    h2 { font-size: clamp(28px, 4vw, 42px); margin: 10px 0 14px; }
+    p { color: var(--muted); margin: 0; }
+    .section { padding: 88px 0; border-top: 1px solid var(--line); }
+    .section-intro { max-width: 650px; margin-bottom: 34px; }
+    .section-intro p { max-width: 620px; }
+    .btn { display: inline-flex; align-items: center; justify-content: center; gap: 9px; padding: 12px 18px; border-radius: 999px; border: 1px solid var(--line); font-weight: 700; font-size: 14px; transition: .2s ease; }
+    .btn.primary { color: #07131b; background: var(--teal); border-color: var(--teal); }
+    .btn:hover { transform: translateY(-2px); border-color: var(--teal); }
+    header { position: sticky; top: 0; z-index: 20; background: rgba(11,18,32,.86); backdrop-filter: blur(16px); border-bottom: 1px solid var(--line); }
+    nav { height: 72px; display: flex; align-items: center; justify-content: space-between; }
+    .brand { font: 800 17px Manrope, sans-serif; letter-spacing: -.04em; }
+    .brand span { color: var(--teal); }
+    .navlinks { display: flex; align-items: center; gap: 25px; color: var(--muted); font-size: 13px; }
+    .navlinks a:hover { color: var(--teal); }
+    .menu { display: none; background: none; border: 1px solid var(--line); color: var(--text); border-radius: 10px; padding: 8px 12px; }
+    .hero { padding: 88px 0 76px; overflow: hidden; position: relative; }
+    .hero:after { content:""; position:absolute; width:500px; height:500px; right:-130px; top:-180px; background: radial-gradient(circle, rgba(67,217,193,.13), transparent 68%); pointer-events:none; }
+    .hero-grid { display: grid; grid-template-columns: 1.25fr .75fr; gap: 48px; align-items: center; position: relative; z-index: 1; }
+    .availability { display: inline-flex; align-items: center; gap: 9px; border: 1px solid rgba(67,217,193,.3); background: rgba(67,217,193,.07); color: #9bf0e2; padding: 7px 12px; border-radius: 99px; font: 12px "DM Mono", monospace; margin-bottom: 24px; }
+    .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--teal); box-shadow: 0 0 0 5px rgba(67,217,193,.12); }
+    .hero h1 { font-size: clamp(46px, 7vw, 76px); max-width: 700px; }
+    .hero h1 span { color: var(--teal); }
+    .hero h3 { color: #c7d4e6; font-size: clamp(17px, 2.3vw, 22px); font-weight: 600; margin: 18px 0 14px; letter-spacing: -.02em; }
+    .hero-copy { max-width: 650px; font-size: 16px; }
+    .actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 28px; }
+    .hero-card { background: linear-gradient(145deg, rgba(21,34,56,.95), rgba(14,25,42,.95)); border: 1px solid var(--line); border-radius: 26px; padding: 25px; box-shadow: 0 24px 80px rgba(0,0,0,.25); }
+    .chart-head { display:flex; justify-content:space-between; align-items:center; margin-bottom: 24px; }
+    .chart-head strong { font: 600 13px "DM Mono", monospace; color:#d9e6f5; }
+    .chart-head span { color:var(--teal); font: 11px "DM Mono", monospace; }
+    .chart-bars { height: 155px; display:flex; align-items:end; gap: 10px; padding: 10px 2px 0; border-bottom:1px solid var(--line); }
+    .bar { flex:1; border-radius: 7px 7px 2px 2px; background: linear-gradient(180deg,var(--teal),rgba(67,217,193,.18)); min-height:20px; }
+    .chart-labels { display:flex; justify-content:space-between; color:#8293aa; font:10px "DM Mono",monospace; margin-top:10px; }
+    .mini-stats { display:grid; grid-template-columns:repeat(3,1fr); gap:10px; margin-top:22px; }
+    .mini-stats div { background:rgba(255,255,255,.035); border:1px solid var(--line); border-radius:13px; padding:12px 10px; }
+    .mini-stats b { display:block; color:var(--text); font:700 18px Manrope,sans-serif; }
+    .mini-stats small { color:var(--muted); font-size:10px; }
+    .metrics { display:grid; grid-template-columns:repeat(4,1fr); gap:14px; margin-top:44px; }
+    .metric { border:1px solid var(--line); background:rgba(255,255,255,.025); padding:18px; border-radius:16px; }
+    .metric strong { display:block; color:var(--teal); font:800 26px Manrope,sans-serif; }
+    .metric span { color:var(--muted); font-size:12px; }
+    .about-grid { display:grid; grid-template-columns:1fr 1fr; gap:28px; }
+    .about-card,.skill-card,.project-card,.timeline-card,.contact-card { border:1px solid var(--line); background:var(--panel); border-radius:var(--radius); padding:25px; }
+    .about-card p + p { margin-top:14px; }
+    .fact-list { display:grid; grid-template-columns:1fr 1fr; gap:12px; }
+    .fact { background:var(--panel2); border:1px solid var(--line); border-radius:14px; padding:15px; }
+    .fact small { display:block; color:#8293aa; font:10px "DM Mono",monospace; text-transform:uppercase; letter-spacing:.08em; }
+    .fact b { display:block; margin-top:4px; font-size:14px; }
+    .skills-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:15px; }
+    .skill-card h3 { font-size:17px; margin:10px 0 16px; }
+    .skill-icon { color:var(--teal); font-size:23px; }
+    .tags { display:flex; flex-wrap:wrap; gap:8px; }
+    .tag { color:#c8d7e9; background:#1b2b43; border:1px solid rgba(160,185,215,.12); border-radius:99px; padding:6px 10px; font-size:11px; }
+    .project-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:18px; }
+    .project-card { padding:0; overflow:hidden; display:flex; flex-direction:column; }
+    .project-visual { min-height:190px; padding:22px; background:linear-gradient(135deg,#142943,#102033); border-bottom:1px solid var(--line); display:flex; align-items:center; justify-content:center; }
+    .dashboard { width:100%; max-width:390px; background:#0b1626; border:1px solid rgba(180,200,225,.18); border-radius:12px; padding:13px; }
+    .dash-top { display:flex; justify-content:space-between; color:#a9bbd1; font:9px "DM Mono",monospace; margin-bottom:12px; }
+    .dash-kpis { display:grid; grid-template-columns:repeat(3,1fr); gap:7px; }
+    .dash-kpis div { border:1px solid rgba(180,200,225,.14); border-radius:6px; padding:8px; }
+    .dash-kpis i { display:block; height:4px; width:40%; background:var(--teal); border-radius:3px; margin-bottom:7px; }
+    .dash-kpis b { font:700 13px Manrope; }
+    .dash-bottom { display:grid; grid-template-columns:1.2fr .8fr; gap:8px; margin-top:8px; }
+    .fake-chart { height:65px; border:1px solid rgba(180,200,225,.13); border-radius:6px; display:flex; align-items:end; gap:5px; padding:8px; }
+    .fake-chart span { flex:1; background:var(--blue); opacity:.85; border-radius:3px 3px 0 0; }
+    .fake-donut { width:58px; height:58px; border-radius:50%; margin:auto; background:conic-gradient(var(--teal) 0 64%, #314762 64% 100%); position:relative; }
+    .fake-donut:after { content:""; position:absolute; inset:12px; border-radius:50%; background:#0b1626; }
+    .project-content { padding:23px; display:flex; flex-direction:column; flex:1; }
+    .project-top { display:flex; justify-content:space-between; gap:12px; align-items:start; }
+    .project-top h3 { font-size:19px; }
+    .project-number { color:var(--teal); font:12px "DM Mono",monospace; }
+    .project-content p { font-size:13px; margin:12px 0 17px; }
+    .project-content ul { color:#a6b4c8; font-size:12px; padding-left:18px; margin:0 0 18px; }
+    .project-content li { margin:5px 0; }
+    .project-content .tags { margin-top:auto; }
+    .project-note { color:#8293aa; font-size:11px; margin-top:12px; }
+    .timeline { display:grid; grid-template-columns:1fr 1fr; gap:16px; }
+    .timeline-card .date { color:var(--teal); font:11px "DM Mono",monospace; }
+    .timeline-card h3 { font-size:17px; margin:9px 0 5px; }
+    .timeline-card p { font-size:13px; }
+    .edu-list { display:grid; gap:12px; }
+    .edu-item { display:flex; justify-content:space-between; gap:18px; padding:18px 20px; background:var(--panel); border:1px solid var(--line); border-radius:15px; }
+    .edu-item h3 { font-size:15px; margin-bottom:5px; }
+    .edu-item p { font-size:12px; }
+    .edu-meta { text-align:right; white-space:nowrap; color:var(--teal); font:12px "DM Mono",monospace; }
+    .cert-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:12px; }
+    .cert { background:var(--panel); border:1px solid var(--line); padding:18px; border-radius:15px; }
+    .cert span { color:var(--teal); font-size:20px; }
+    .cert b { display:block; margin-top:10px; font-size:13px; }
+    .contact-grid { display:grid; grid-template-columns:1fr 1fr; gap:18px; }
+    .contact-card h3 { font-size:20px; margin-bottom:12px; }
+    .contact-link { display:flex; align-items:center; gap:12px; color:#dce7f5; padding:13px 0; border-bottom:1px solid var(--line); font-size:13px; overflow-wrap:anywhere; }
+    .contact-link:last-child { border:0; }
+    .contact-link span { color:var(--teal); width:22px; }
+    footer { padding:25px 0; border-top:1px solid var(--line); color:#8293aa; font-size:12px; }
+    footer .wrap { display:flex; justify-content:space-between; gap:15px; flex-wrap:wrap; }
+    @media(max-width:850px) {
+      .hero-grid,.about-grid { grid-template-columns:1fr; }
+      .hero-card { max-width:540px; }
+      .skills-grid { grid-template-columns:repeat(2,1fr); }
+      .cert-grid { grid-template-columns:repeat(2,1fr); }
+    }
+    @media(max-width:650px) {
+      .wrap { width:min(var(--max),calc(100% - 30px)); }
+      .navlinks { display:none; position:absolute; top:72px; left:0; right:0; background:#101a2a; padding:18px 22px; border-bottom:1px solid var(--line); flex-direction:column; align-items:flex-start; gap:15px; }
+      .navlinks.open { display:flex; }
+      .menu { display:block; }
+      .hero { padding:65px 0 55px; }
+      .metrics { grid-template-columns:repeat(2,1fr); }
+      .skills-grid,.project-grid,.timeline,.contact-grid { grid-template-columns:1fr; }
+      .section { padding:65px 0; }
+      .edu-item { flex-direction:column; }
+      .edu-meta { text-align:left; }
+    }
+  </style>
+</head>
+<body>
+<header>
+  <nav class="wrap">
+    <a class="brand" href="#home">SANDHIYA G M<span></span></a>
+    <button class="menu" id="menuBtn" aria-label="Toggle navigation">☰</button>
+    <div class="navlinks" id="navLinks">
+      <a href="#about">About</a><a href="#skills">Skills</a><a href="#projects">Projects</a>
+      <a href="#education">Education</a><a href="#certifications">Certifications</a><a href="#contact">Contact</a>
+    </div>
+  </nav>
+</header>
+
+<main>
+  <section class="hero" id="home">
+    <div class="wrap">
+      <div class="hero-grid">
+        <div>
+          <div class="availability"><span class="dot"></span> OPEN TO ENTRY-LEVEL OPPORTUNITIES</div>
+          <div class="eyebrow">DATA ANALYST · CHENNAI, INDIA</div>
+          <h1>Turning data<br>into <span>direction.</span></h1>
+          <h3>Hi, I'm Sandhiya G M — Data Analyst</h3>
+          <p class="hero-copy">Computer Science and Engineering graduate skilled in SQL, Advanced Excel, Python and Power BI. I enjoy cleaning, exploring and visualising data to uncover meaningful insights and support better decisions.</p>
+          <div class="actions">
+            <a class="btn primary" href="#projects">Explore my projects ↗</a>
+            <a class="btn" href="#contact">Let's connect</a>
+          
+            <a class="btn" href="D:\Users\SANDHIYA G.M\OneDrive\Desktop\sandhiya_data_analyst_portfolio\RESUME_NEW.pdf" target="_blank" rel="noopener">View resume ↓</a>
+          </div>
+        </div>
+        <div class="hero-card" aria-label="Illustrative analytics dashboard graphic">
+          <div class="chart-head"><strong>DATA INSIGHTS / OVERVIEW</strong><span>ANALYTICS</span></div>
+          <div class="chart-bars">
+            <div class="bar" style="height:35%"></div><div class="bar" style="height:52%"></div>
+            <div class="bar" style="height:44%"></div><div class="bar" style="height:68%"></div>
+            <div class="bar" style="height:58%"></div><div class="bar" style="height:83%"></div>
+            <div class="bar" style="height:72%"></div><div class="bar" style="height:96%"></div>
+          </div>
+          <div class="chart-labels"><span>JAN</span><span>MAR</span><span>MAY</span><span>JUL</span><span>SEP</span><span>NOV</span></div>
+          <div class="mini-stats">
+            <div><b>SQL</b><small>Querying</small></div>
+            <div><b>Python</b><small>Analysis</small></div>
+            <div><b>Power BI</b><small>Visualisation</small></div>
+          </div>
+          <p class="project-note">Illustrative graphic — not a live dataset.</p>
+        </div>
+      </div>
+      <div class="metrics">
+        <div class="metric"><strong>8.32</strong><span>CGPA / 10</span></div>
+        <div class="metric"><strong>3</strong><span>Featured projects</span></div>
+        <div class="metric"><strong>4</strong><span>Core analytics tools</span></div>
+        <div class="metric"><strong>2026</strong><span>Graduation batch</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="about">
+    <div class="wrap">
+      <div class="section-intro"><div class="eyebrow">A LITTLE ABOUT ME</div><h2>Curious about data.<br>Focused on useful insights.</h2><p>I bring together analytical thinking, programming fundamentals and visual storytelling to make data easier to understand.</p></div>
+      <div class="about-grid">
+        <div class="about-card">
+          <p>I am a Computer Science and Engineering graduate from Velammal Engineering College, Chennai. My learning and project work have focused on data cleaning, exploratory data analysis, SQL querying, and interactive dashboard development.</p>
+          <p>Through my Nifty 50 and E-commerce projects, I have practised transforming raw datasets into structured information and presenting findings through Power BI. I have also explored machine learning through a Heart Disease Prediction project using Logistic Regression.</p>
+          <p>I am looking for an entry-level opportunity where I can continue learning, contribute to a data team and turn business questions into clear analysis.</p>
+        </div>
+        <div class="fact-list">
+          <div class="fact"><small>Location</small><b>Chennai, India</b></div>
+          <div class="fact"><small>Education</small><b>B.E. Computer Science</b></div>
+          <div class="fact"><small>Graduation</small><b>2026</b></div>
+          <div class="fact"><small>Career focus</small><b>Data Analytics</b></div>
+          <div class="fact"><small>Languages</small><b>English, Tamil</b></div>
+          <div class="fact"><small>Availability</small><b>Entry-level roles</b></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="skills">
+    <div class="wrap">
+      <div class="section-intro"><div class="eyebrow">MY TOOLKIT</div><h2>Skills & technologies</h2><p>Tools and concepts I have used in coursework and projects. I am continuously strengthening these skills through hands-on practice.</p></div>
+      <div class="skills-grid">
+        <div class="skill-card"><div class="skill-icon">▤</div><h3>Data Analysis</h3><div class="tags"><span class="tag">Data Cleaning</span><span class="tag">Data Preprocessing</span><span class="tag">Data Validation</span><span class="tag">Duplicate Removal</span><span class="tag">EDA</span><span class="tag">ETL</span></div></div>
+        <div class="skill-card"><div class="skill-icon">⌘</div><h3>SQL & Databases</h3><div class="tags"><span class="tag">SQL</span><span class="tag">Joins</span><span class="tag">Aggregations</span><span class="tag">Window Functions</span><span class="tag">MySQL</span></div></div>
+        <div class="skill-card"><div class="skill-icon">▥</div><h3>Power BI & Excel</h3><div class="tags"><span class="tag">Power BI</span><span class="tag">DAX</span><span class="tag">Power Query</span><span class="tag">Advanced Excel</span><span class="tag">Pivot Tables</span><span class="tag">Dashboards</span></div></div>
+        <div class="skill-card"><div class="skill-icon">⌁</div><h3>Python</h3><div class="tags"><span class="tag">Python</span><span class="tag">Pandas</span><span class="tag">NumPy</span><span class="tag">Matplotlib</span></div></div>
+        <div class="skill-card"><div class="skill-icon">◈</div><h3>Machine Learning</h3><div class="tags"><span class="tag">Logistic Regression</span><span class="tag">Classification</span><span class="tag">Data Preprocessing</span><span class="tag">Confusion Matrix</span></div></div>
+        <div class="skill-card"><div class="skill-icon">✳</div><h3>Professional Skills</h3><div class="tags"><span class="tag">Analytical Thinking</span><span class="tag">Problem-Solving</span><span class="tag">Reporting</span><span class="tag">Data Visualisation</span></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="projects">
+    <div class="wrap">
+      <div class="section-intro"><div class="eyebrow">SELECTED WORK</div><h2>Projects that turn data<br>into something useful.</h2><p>Hands-on projects covering data preparation, analysis, dashboarding and introductory machine learning.</p></div>
+      <div class="project-grid">
+        <article class="project-card">
+          <div class="project-visual"><div class="dashboard">
+            <div class="dash-top"><span>NIFTY 50 / MARKET OVERVIEW</span><span>2000—2021</span></div>
+            <div class="dash-kpis"><div><i></i><b>50</b></div><div><i></i><b>Daily</b></div><div><i></i><b>200D</b></div></div>
+            <div class="dash-bottom"><div class="fake-chart"><span style="height:25%"></span><span style="height:45%"></span><span style="height:38%"></span><span style="height:68%"></span><span style="height:57%"></span><span style="height:90%"></span></div><div class="fake-donut"></div></div>
+          </div></div>
+          <div class="project-content">
+            <div class="project-top"><h3>Nifty 50 Stock Market Analysis Dashboard</h3><span class="project-number">01</span></div>
+            <p>Prepared and analysed historical stock market data to explore returns, volatility, moving averages and sector-wise performance.</p>
+            <ul>
+              <li>Combined 50 stock CSV files using Power Query.</li>
+              <li>Cleaned data types, removed duplicates and mapped sectors.</li>
+              <li>Used SQL window functions to calculate daily returns, 50-day moving averages and volatility.</li>
+              <li>Built a 3-page interactive Power BI dashboard with DAX measures.</li>
+            </ul>
+            <div class="tags"><span class="tag">Excel</span><span class="tag">SQL</span><span class="tag">Power Query</span><span class="tag">Power BI</span><span class="tag">DAX</span></div>
+            <div class="project-note">Dashboard illustration for portfolio presentation; replace with actual dashboard screenshots when available.</div>
+          </div>
+        </article>
+        <article class="project-card">
+          <div class="project-visual"><div class="dashboard">
+            <div class="dash-top"><span>E-COMMERCE / SALES SUMMARY</span><span>REPORT</span></div>
+            <div class="dash-kpis"><div><i></i><b>₹42.7L</b></div><div><i></i><b>550</b></div><div><i></i><b>2 pages</b></div></div>
+            <div class="dash-bottom"><div class="fake-chart"><span style="height:62%"></span><span style="height:35%"></span><span style="height:78%"></span><span style="height:52%"></span><span style="height:88%"></span><span style="height:70%"></span></div><div class="fake-donut"></div></div>
+          </div></div>
+          <div class="project-content">
+            <div class="project-top"><h3>E-commerce Sales Dashboard</h3><span class="project-number">02</span></div>
+            <p>Created an interactive sales report to track key business metrics and explore sales performance.</p>
+            <ul>
+              <li>Cleaned and transformed sales data in Power Query.</li>
+              <li>Designed a Star Schema using fact and dimension tables.</li>
+              <li>Created DAX measures for sales, orders, units sold, active customers and average order value.</li>
+              <li>Built a 2-page dashboard with KPI cards, charts, slicers and navigation.</li>
+            </ul>
+            <div class="tags"><span class="tag">Power BI</span><span class="tag">Power Query</span><span class="tag">DAX</span><span class="tag">Excel</span></div>
+            <div class="project-note">Project figures: ₹42.7 lakh sales across 550 orders, as stated in the resume.</div>
+          </div>
+        </article>
+        <article class="project-card">
+          <div class="project-visual"><div class="dashboard">
+            <div class="dash-top"><span>HEART DISEASE / MODEL WORKFLOW</span><span>ML</span></div>
+            <div class="dash-kpis"><div><i></i><b>Input</b></div><div><i></i><b>Model</b></div><div><i></i><b>Output</b></div></div>
+            <div style="display:flex;align-items:center;justify-content:space-around;padding:20px 5px;color:#c8d7e9;font:10px 'DM Mono',monospace">
+              <span style="border:1px solid #36516e;padding:10px;border-radius:7px">DATA</span><span style="color:var(--teal)">→</span><span style="border:1px solid #36516e;padding:10px;border-radius:7px">LOGISTIC<br>REGRESSION</span><span style="color:var(--teal)">→</span><span style="border:1px solid #36516e;padding:10px;border-radius:7px">RESULT</span>
+            </div>
+          </div></div>
+          <div class="project-content">
+            <div class="project-top"><h3>Heart Disease Prediction System</h3><span class="project-number">03</span></div>
+            <p>Explored a healthcare dataset and applied a classification model to estimate the likelihood of heart disease.</p>
+            <ul>
+              <li>Prepared and preprocessed the dataset, including handling missing values.</li>
+              <li>Applied Logistic Regression for classification.</li>
+              <li>Evaluated model performance using accuracy and a confusion matrix.</li>
+              <li>Presented prediction results through an application interface.</li>
+            </ul>
+            <div class="tags"><span class="tag">Python</span><span class="tag">Logistic Regression</span><span class="tag">Machine Learning</span></div>
+          </div>
+        </article>
+        <article class="project-card">
+          <div class="project-visual" style="background:linear-gradient(135deg,#172b45,#132038)">
+            <div style="text-align:center"><div style="font:12px 'DM Mono',monospace;color:var(--teal);letter-spacing:.12em">MY ANALYTICS WORKFLOW</div><div style="display:flex;gap:9px;align-items:center;justify-content:center;margin-top:22px;flex-wrap:wrap"><span class="tag">Collect</span><b style="color:var(--teal)">→</b><span class="tag">Clean</span><b style="color:var(--teal)">→</b><span class="tag">Analyse</span><b style="color:var(--teal)">→</b><span class="tag">Visualise</span></div><p style="font-size:11px;margin-top:20px">From raw data to actionable insights</p></div>
+          </div>
+          <div class="project-content">
+            <div class="project-top"><h3>My Approach to Data Analysis</h3><span class="project-number">04</span></div>
+            <p>A repeatable workflow I apply when working with datasets and business questions.</p>
+            <ul>
+              <li>Understand the problem and identify the required data.</li>
+              <li>Inspect data quality, missing values, duplicates and formats.</li>
+              <li>Use SQL or Python to prepare and analyse the data.</li>
+              <li>Communicate findings through clear reports and dashboards.</li>
+            </ul>
+            <div class="tags"><span class="tag">Data Quality</span><span class="tag">EDA</span><span class="tag">SQL</span><span class="tag">Visualisation</span></div>
+            <div class="project-note">Personal workflow summary, not a separate client project.</div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="education">
+    <div class="wrap">
+      <div class="section-intro"><div class="eyebrow">ACADEMIC BACKGROUND</div><h2>Education</h2></div>
+      <div class="edu-list">
+        <div class="edu-item"><div><h3>B.E. Computer Science and Engineering</h3><p>Velammal Engineering College, Chennai</p></div><div class="edu-meta">2022–2026<br>CGPA 8.32/10</div></div>
+        <div class="edu-item"><div><h3>Class XII — HSC</h3><p>Velammal Matriculation School</p></div><div class="edu-meta">2022<br>89%</div></div>
+        <div class="edu-item"><div><h3>Class X — SSLC</h3><p>G K Shetty Vivekananda Vidyalaya School</p></div><div class="edu-meta">2020<br>75%</div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="certifications">
+    <div class="wrap">
+      <div class="section-intro"><div class="eyebrow">CONTINUOUS LEARNING</div><h2>Certifications</h2><p>Courses completed in key tools used in my analytics learning journey.</p></div>
+      <div class="cert-grid">
+        <div class="cert"><span>▤</span><b>Advanced Excel</b></div>
+        <div class="cert"><span>⌘</span><b>SQL</b></div>
+        <div class="cert"><span>▥</span><b>Power BI</b></div>
+        <div class="cert"><span>⌁</span><b>Python Programming</b></div>
+      </div>
+      <p class="project-note">Add the issuing organisation and certificate links once you have the certificate details available.</p>
+    </div>
+  </section>
+
+  <section class="section" id="contact">
+    <div class="wrap">
+      <div class="section-intro"><div class="eyebrow">GET IN TOUCH</div><h2>Let's talk about<br><span style="color:var(--teal)">data opportunities.</span></h2><p>I am interested in entry-level Data Analyst, Junior Data Analyst, BI Analyst, MIS Analyst and Power BI roles in Chennai.</p></div>
+      <div class="contact-grid">
+        <div class="contact-card">
+          <h3>Connect with me</h3>
+          <a class="contact-link" href="mailto:sandhiyapangajamgm@gmail.com"><span>✉</span> sandhiyapangajamgm@gmail.com</a>
+          <a class="contact-link" href="tel:+918668043394"><span>☎</span> +91 8668043394</a>
+          <a class="contact-link" href="https://www.linkedin.com/in/sandhiya-murali/" target="_blank" rel="noopener"><span>↗</span> LinkedIn profile</a>
+          <a class="contact-link" href="https://github.com/Sandhiya29gm" target="_blank" rel="noopener"><span>⌘</span> GitHub profile</a>
+        </div>
+        <div class="contact-card">
+          <h3>What I can bring</h3>
+          <p>• Data cleaning and preparation</p>
+          <p style="margin-top:12px">• SQL querying and analysis</p>
+          <p style="margin-top:12px">• Power BI dashboards and reporting</p>
+          <p style="margin-top:12px">• Python-based data exploration</p>
+          <p style="margin-top:12px">• A learning mindset and analytical approach</p>
+          <div class="actions"><a class="btn primary" href="mailto:sandhiyapangajamgm@gmail.com?subject=Data%20Analyst%20Opportunity">Email me ↗</a></div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer><div class="wrap"><span>© <span id="year"></span> Sandhiya G M · Data Analyst Portfolio</span><span>Designed with purpose · Chennai, India</span></div></footer>
+<script>
+  const menuBtn = document.getElementById('menuBtn');
+  const navLinks = document.getElementById('navLinks');
+  menuBtn.addEventListener('click', () => navLinks.classList.toggle('open'));
+  navLinks.querySelectorAll('a').forEach(link => link.addEventListener('click', () => navLinks.classList.remove('open')));
+  document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+</body>
+</html>
